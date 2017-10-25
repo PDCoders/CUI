@@ -13,17 +13,19 @@ gulp.task('sass',function() {
         cascade: true, 
         remove:true
     }))
-    //.pipe(plugins.minifyCss())
-    //.pipe(plugins.rename('style.css'))
+    .pipe(gulp.dest('dist/css'))
+    .pipe(plugins.cssmin())
+    .pipe(plugins.rename('cui.min.css'))
     .pipe(gulp.dest('dist/css'))
     .pipe(browsersync.stream());
 });
 
 gulp.task('js',function() {
   	gulp.src('src/js/*.js')
-    //.pipe(plugins.concat('all.js'))
-    //.pipe(plugins.uglify())
-    //.pipe(plugins.rename('all.min.js'))
+    .pipe(plugins.concat('cui.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(plugins.uglify())
+    .pipe(plugins.rename('cui.min.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(browsersync.stream());
 });
@@ -53,6 +55,12 @@ gulp.task('images', function () {
     .pipe(browsersync.stream());
 });
 
+gulp.task('lib', function () {
+  gulp.src('src/lib/**/*')
+    .pipe(gulp.dest('dist/lib'))
+    .pipe(browsersync.stream());
+});
+
 /*gulp.task("clean", function(){
     return gulp.src('dist')
         .pipe(plugins.clean());
@@ -60,16 +68,17 @@ gulp.task('images', function () {
 
 
 gulp.task('serve',  function() {
-    gulp.start('sass','js','html','fonts','images');
+    gulp.start('sass','js','html','fonts','images','lib');
     browsersync.init({
-        port: 9999,
+        port: 9090,
         server: {
             baseDir: ['./dist']
         }
     });
-    gulp.watch('src/js/**/*.js', ['js']);         //监控文件变化，自动更新
-    gulp.watch('src/sass/**/*.scss', ['sass']);
+    gulp.watch('src/js/*.js', ['js']);         //监控文件变化，自动更新
+    gulp.watch('src/sass/*.scss', ['sass']);
     gulp.watch('src/images/**/*', ['images']);
+    gulp.watch('src/lib/**/*', ['lib']);
     gulp.watch('src/*.html', ['html']);
     gulp.watch('src/fonts/**/*', ['fonts']);
 });
