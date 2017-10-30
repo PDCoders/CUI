@@ -76,7 +76,7 @@ gulp.task('serve',  function() {
         }
     });
     gulp.watch('src/js/*.js', ['js']);         //监控文件变化，自动更新
-    gulp.watch('src/sass/*.scss', ['sass']);
+    gulp.watch('src/sass/**/*.scss', ['sass']);
     gulp.watch('src/images/**/*', ['images']);
     gulp.watch('src/lib/**/*', ['lib']);
     gulp.watch('src/*.html', ['html']);
