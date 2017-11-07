@@ -1,3 +1,6 @@
 @charset "utf-8";
-
-@import "./_table_mixin";
+@mixin animation($params){
+  -webkit-animation:$params;
+  -moz-animation:$params;
+  animation:$params;
+}

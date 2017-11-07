@@ -1,6 +1,7 @@
 @charset "utf-8";
 @import "../variables/variables";
-@import "../mixins/_table_mixin";
+@import "../mixins/mixins";
+@import "../mixins/table_mixin";
 table{
   background-color: $table-bg;
   border-spacing: 0;
@@ -414,20 +415,39 @@ table {
 .cui-table-loading {
   display: none;
   position: absolute;
-  top: 42px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 99;
-  background-color: #fff;
+  background-color: rgba(0,0,0,.35);
   text-align: center;
+  .loadingCnt{
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left: -55px;
+    margin-top: -15px;
+    color:#fff;
+    font-size: 16px;
+    line-height: 30px;
+    .icon-loading{
+      width: 16px;
+      vertical-align: middle;
+      margin-right: 5px;
+      margin-top: -1px;
+      @include animation(mymove 2s linear infinite);
+    }
+  }
 }
+
 
 .cui-table-body .card-view .title {
   font-weight: bold;
   display: inline-block;
   min-width: 30%;
   text-align: left !important;
+  position: relative;
 }
 
 /* support bootstrap 2 */
@@ -466,7 +486,7 @@ table {
 }
 
 .cui-table .table > thead > tr > th {
-  vertical-align: bottom;
+  vertical-align: middle;
   border-bottom: 1px solid #ddd;
 }
 
@@ -512,3 +532,30 @@ div.cui-table-scroll-outer {
   display: block;
   clear: both;
 }
+
+@-webkit-keyframes mymove {
+  from {-webkit-transform:rotate(0deg);-webkit-transform-origin:50% 50%;  }
+  to {-webkit-transform:rotate(360deg);-webkit-transform-origin:50% 50%;}
+}
+@-moz-keyframes mymove {
+  from {-moz-transform:rotate(0deg);-moz-transform-origin:50% 50%;}
+  to {-moz-transform:rotate(360deg);-moz-transform-origin:50% 50%;}
+}
+@keyframes mymove {
+  from {transform:rotate(0deg);transform-origin:50% 50%;}
+  to {transform:rotate(360deg);transform-origin:50% 50%;}
+}
+
+/*
+@-webkit-keyframes change {
+  from {-webkit-transform:rotate(0deg);-webkit-transform-origin:50% 50%;  }
+  to {-webkit-transform:rotate(360deg);-webkit-transform-origin:50% 50%;}
+}
+@-moz-keyframes change {
+  from {-moz-transform:rotate(0deg);-moz-transform-origin:50% 50%;}
+  to {-moz-transform:rotate(360deg);-moz-transform-origin:50% 50%;}
+}
+@keyframes change {
+  from {transform:rotate(0deg);transform-origin:50% 50%;}
+  to {transform:rotate(360deg);transform-origin:50% 50%;}
+}*/
