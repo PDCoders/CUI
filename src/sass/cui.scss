@@ -2,6 +2,18 @@
  * CUI v1.0.0
  * Copyright PDCoders.
  */
+ul,li{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: #333;
+}
+a:hover{
+  text-decoration: none;
+}
 
 @charset "utf-8";
 
@@ -16,6 +28,7 @@
 * table style
 */
 @import "modules/_table";
+@import "modules/_sidebar";
 /*
 * table style
 */

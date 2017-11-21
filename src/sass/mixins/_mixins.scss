@@ -4,3 +4,8 @@
   -moz-animation:$params;
   animation:$params;
 }
+
+@mixin size($width,$height){
+  width: $width;
+  height: $height;
+}

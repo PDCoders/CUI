@@ -1,0 +1,58 @@
+@charset "utf-8";
+@import "../variables/variables";
+@import "../mixins/mixins";
+@import "../mixins/sidebar_mixin";
+
+$lineHieght: 26px;
+$linkPadding: 4px;
+$animationTime: 0.5;
+$angle: -90;
+
+.sidebar-menu{
+  width: 220px;
+  background-color: #aaa;
+}
+.sidebar-menu li a{
+  position: relative;
+  display: block;
+  padding: $linkPadding;
+  height: $lineHieght;
+}
+.sidebar-menu > li.active > a{
+  border-left: blue solid $linkPadding;
+}
+.sidebar-menu li.active > a{
+  color: #fff;
+}
+
+.sidebar-menu li a .labelName{
+  vertical-align: middle;
+  display: inline-block;
+  line-height: $lineHieght + 2 * $linkPadding;
+  position: absolute;
+  left: 2 * $linkPadding;
+  right: 4 * $linkPadding;
+  top: 0;
+  @extend .ellipsis;
+}
+.sidebar-menu > li.active > a .labelName{
+  left: $linkPadding;
+}
+.sidebar-menu li a .arrow{
+  border-top: $linkPadding solid transparent;
+  border-bottom: $linkPadding solid transparent;
+  border-right: $linkPadding solid #000;
+  @include size(0,0);
+  position: absolute;
+  right: 2 * $linkPadding - 2px;
+  top: 50%;
+  margin-top: -$linkPadding;
+  @include arrow-animation(0,$animationTime)
+}
+.sidebar-menu li.menu-open > a .arrow{
+  @include arrow-animation($angle,$animationTime)
+}
+.sidebar-menu li .treeview-menu{
+  display: none;
+  padding-left: 3 * $linkPadding - 2px;
+}

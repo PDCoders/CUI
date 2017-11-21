@@ -1,0 +1,12 @@
+@mixin arrow-animation($angle,$time) {
+  -webkit-transition: transform #{$time}s ease;
+  -moz-transition: transform #{$time}s ease;
+  -ms-transition: transform #{$time}s ease;
+  -o-transition: transform #{$time}s ease;
+  transition: transform #{$time}s ease;
+  -webkit-transform: rotate(#{$angle}deg);
+  -moz-transform: rotate(#{$angle}deg);
+  -ms-transform: rotate(#{$angle}deg);
+  -o-transform: rotate(#{$angle}deg);
+  transform: rotate(#{$angle}deg);
+}

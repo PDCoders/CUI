@@ -1,4 +1,4 @@
-(function($){
+;(function($){
   //先设置一个false矩阵，然后通过更改矩阵状态来为每一列标上索引
   function setFieldIndex(columns){
     var i, j, k,
@@ -154,7 +154,7 @@
           }
           var text = '',
               style = '',
-              classStr = sprintf(' class="%s"',column['class']),
+              classStr = utils.sprintf(' class="%s"',column['class']),
               unitWidth = 'px',
               width = column.width;
           column = $.extend({},Datatable.COLUMN_DEFAULTS,column)
@@ -166,15 +166,15 @@
           if (column.width && typeof column.width === 'string') {
             width = column.width.replace('%', '').replace('px', '');
           }
-          style += sprintf('text-align: %s; vertical-align: %s; width: %s; ', column.align, column.valign,(column.checkbox || column.radio) && !width ? '36px' : (width ? width + unitWidth : undefined));
+          style += utils.sprintf('text-align: %s; vertical-align: %s; width: %s; ', column.align, column.valign,(column.checkbox || column.radio) && !width ? '36px' : (width ? width + unitWidth : undefined));
 
           html.push(
-            '<th ' + sprintf('title="%s"',column.titleTooltip),
-            column.checkbox || column.radio ? sprintf(' class="bs-checkbox %s"',column['class']) : classStr,
-            sprintf(' style="%s"', style),
-            column.checkbox || column.radio ? sprintf(' rowspan="%s"', that.options.columns.length) : sprintf(' rowspan="%s"', column.rowspan || 1),
-            sprintf(' colspan="%s"', column.colspan || 1),
-            sprintf(' data-field="%s"', column.field),
+            '<th ' + utils.sprintf('title="%s"',column.titleTooltip),
+            column.checkbox || column.radio ? utils.sprintf(' class="bs-checkbox %s"',column['class']) : classStr,
+            utils.sprintf(' style="%s"', style),
+            column.checkbox || column.radio ? utils.sprintf(' rowspan="%s"', that.options.columns.length) : utils.sprintf(' rowspan="%s"', column.rowspan || 1),
+            utils.sprintf(' colspan="%s"', column.colspan || 1),
+            utils.sprintf(' data-field="%s"', column.field),
             '>'
           );
 
@@ -232,10 +232,10 @@
         html.push(
           '<td',
           ' style="',
-          sprintf('text-align:%s; ', isInputElem ? 'center' : that.dataMap.header.columns[that.dataMap.header.columnFieldToIndex[that.dataMap.header.fields[i]]].align),
-          sprintf('vertical-align: %s;',isInputElem ? 'middle' : that.dataMap.header.columns[that.dataMap.header.columnFieldToIndex[that.dataMap.header.fields[i]]].valign),
+          utils.sprintf('text-align:%s; ', isInputElem ? 'center' : that.dataMap.header.columns[that.dataMap.header.columnFieldToIndex[that.dataMap.header.fields[i]]].align),
+          utils.sprintf('vertical-align: %s;',isInputElem ? 'middle' : that.dataMap.header.columns[that.dataMap.header.columnFieldToIndex[that.dataMap.header.fields[i]]].valign),
           '">',
-          isInputElem ? sprintf('<input type="%s" name="%">',that.dataMap.header.fields[i],that.options.selectSingleName) : that.options.tdFormatter(data[that.dataMap.header.fields[i]]),
+          isInputElem ? utils.sprintf('<input type="%s" name="%">',that.dataMap.header.fields[i],that.options.selectSingleName) : that.options.tdFormatter(data[that.dataMap.header.fields[i]]),
           '</td>'
         )
       }
