@@ -141,7 +141,7 @@
     //打开子菜单方法
     open: function($treeviewMenu,$parentLi){
       var that = this
-      $parentLi.addClass(Sidebar.className.open)
+      // $parentLi.addClass(Sidebar.className.open)
       $treeviewMenu.slideDown(that.options.animationSpeed)
 
       if(that.options.accordion){
